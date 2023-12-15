@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["mongodb"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+model Plant {
+  id  String @id  @default(auto()) @map("_id") @db.ObjectId
+  family String
+  genus String
+  koreanName String @unique
+  scientificName String
+  nickname String?
+  origin String?
+  distribution String?
+  tall  String?
+  habitat String?
+  overview  String?
+  imageUrl String?
+}
